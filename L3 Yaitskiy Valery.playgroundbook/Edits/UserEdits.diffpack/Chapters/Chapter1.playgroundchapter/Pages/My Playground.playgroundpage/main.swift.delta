@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>import Foundation
+
+enum engineState {
+    case start, stop
+}
+
+enum AreWindowsOpen {
+    case open, close
+}
+
+enum trunkState {
+    case full, empty
+}
+
+struct car {
+    let brandAuto : String
+    let yearOfManufacture : Int
+    var trunkVolume : Double {
+        willSet {
+            if (trunkState == .empty) &amp;&amp; (trunkVolume &gt; 0) &amp;&amp; (trunkVolume != 0) &amp;&amp; (newValue &lt; trunkVolume) {
+                let space = trunkVolume - newValue
+                print ("\(brandAuto) trunk free: \(space)")
+            } else { print("\(brandAuto) trunk is full.")}
+        }
+    }
+    var engineState : engineState {
+        willSet {
+            if newValue == .start {
+                print ("\(brandAuto) engine is on")
+            } else {print("\(brandAuto) engine is off")}
+        }
+    }
+    var AreWindowsOpen : AreWindowsOpen {
+        willSet {
+            if newValue == .open {
+                print("\(brandAuto) windows are open")
+            } else { print("\(brandAuto) windows are close") }
+        }
+    }
+    var trunkState : trunkState
+    mutating func emptyTrunck() {
+        self.trunkState = .empty
+        print ("\(brandAuto) trunck is empty")
+    }
+}
+
+struct truck {
+    let brandTruck : String
+    let yearOfManufacture : Int
+    var truckVolume : Double {
+        willSet {
+            if (trunkState == .empty) &amp;&amp; (truckVolume &gt; 0) &amp;&amp; (truckVolume != 0) &amp;&amp; (newValue &lt; truckVolume) {
+                let space = truckVolume - newValue
+                print ("\(brandTruck) trunk free: \(space)")
+            } else { print(" \(brandTruck) trunk is full.")}
+        }
+    }
+    var engineState : engineState {
+        willSet {
+            if newValue == .start {
+                print ("\(brandTruck) engine is on")
+            } else {print("\(brandTruck) engine is off")}
+        }
+    }
+    var AreWindowsOpen : AreWindowsOpen {
+        willSet {
+            if newValue == .open {
+                print("\(brandTruck) windows are open")
+            } else { print("\(brandTruck) windows are close") }
+        }
+    }
+    var trunkState : trunkState
+    mutating func emptyTrunck() {
+        self.trunkState = .empty
+        print ("\(brandTruck) trunck is empty")
+    }
+}
+
+var car1 = car(brandAuto: "BMW", yearOfManufacture: 2016, trunkVolume: 580.0 , engineState: .stop, AreWindowsOpen: .open, trunkState: .empty)
+var car2 = car(brandAuto: "Kia", yearOfManufacture: 2017, trunkVolume: 480.0, engineState: .stop, AreWindowsOpen: .close, trunkState: .empty)
+
+var truck1 = truck(brandTruck: "Mercedes",  yearOfManufacture: 2012, truckVolume: 100000.0, engineState: .start, AreWindowsOpen: .open, trunkState: .empty)
+var truck2 = truck(brandTruck: "Chevrolet", yearOfManufacture: 2013, truckVolume: 150000.0, engineState: .start, AreWindowsOpen: .close, trunkState: .empty)
+
+
+car1.engineState = .start
+car1.trunkVolume = 340.0
+car1.AreWindowsOpen = .open
+
+car2.engineState = .start
+car2.trunkVolume = 190.0
+car2.AreWindowsOpen = .open
+
+truck1.engineState = .stop
+truck1.AreWindowsOpen = .close
+truck1.truckVolume = 3452.0
+
+truck2.AreWindowsOpen = .open
+truck2.engineState = .stop
+truck2.truckVolume = 56789.0
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{1, 3130}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{1, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
